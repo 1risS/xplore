@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "live-server"
   },
   "repository": {
     "type": "git",
@@ -15,9 +15,6 @@
     "url": "https://github.com/1risS/xplore/issues"
   },
   "homepage": "https://github.com/1risS/xplore#readme",
-  "scripts": {
-    "start": "live-server"
-  },
   "dependencies": {
     "live-server": "^1.2.1"
   }

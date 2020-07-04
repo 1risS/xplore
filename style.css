@@ -3,15 +3,12 @@
 body,
 html {
   font-family: helvetica, arial, sans-serif;
-  background-color: #000;
+  background-color: pink;
   margin: 0;
   overflow: hidden;
 }
 
-audio {
-  position: absolute;
-  top: 5px;
-  left: 5px;
+audio { 
   filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);
   width: 300px;
   height: 25px;

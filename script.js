@@ -5,26 +5,44 @@ function resizeCanvas() {
 }
 
 function run() {
-  osc([60, 30, 15, 7.5].fast(5))
-    .color(1, 0, 0)
-    .mult(
-      osc()
-        .rotate(Math.PI / 2)
-        .thresh()
-        .mult(noise([40, 20, 10, 5, 2.5].fast(5)))
-        .shift(0.001, 0.004, 0, 0.5)
-    )
-    .modulate(noise(() => a.fft[1] * 10 + 0.01))
-    .mask(
-      shape(40)
-        .scale(() => a.fft[1] * 3.5 + 0.1)
-        .modulateScale(shape(3).scale([1, 2].fast(5)))
-        .modulate(noise(() => ((Math.sin(time * 2) + 1) / 2) * 200 + 20))
-    )
-    .out();
+  a.show()
 
-  // Display FFT histogram
-  a.show();
+  a.setBins(8)
+  
+  a.hide()
+  
+  osc([60, 30, 15, 7.5].fast(5))
+  .color(1,0,0)
+  .mult(osc()
+          .rotate(Math.PI/2)
+          .thresh()
+          .mult(noise([40, 20, 10, 5, 2.5]
+                      .fast(5)))
+          .shift(0.001,(()=> a.fft[0]*0.04+ 0)
+          , 0,0.5))
+  .modulate(
+    noise(()=>a.fft[2]*10 +0.01)
+  )
+  .mask(
+  shape(40)
+    .scale(()=>a.fft[3]*7.5 +0.1)
+    .modulateScale(shape(3)
+                  .scale([1,2].fast(5)))
+    .modulate(noise(()=> (((Math.sin(time/5)+1)/2)*20 + 5))
+                          .mult(src(o0)
+                          , ()=>a.fft[6]*1 +0.001))
+  )
+  .add(
+  shape(4)
+    .scale([4,0])
+    .mult(
+      solid(1,[0,1].fast(5),1)
+      )
+  ,()=>a.fft[1]*1 +0.001
+  )
+  .scrollX(0.47)
+    .kaleid(2).rotate(Math.PI/2)
+  .out()
 }
 
 function init() {
