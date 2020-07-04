@@ -45,6 +45,28 @@ function run() {
   .out()
 }
 
+function play() {
+  console.log("> play");
+
+  // Get context and source for CustomAudio
+  window.context = new AudioContext();
+  var el = document.getElementById("audio");
+  var source = context.createMediaElementSource(el);
+  source.connect(context.destination);
+  el.play();
+
+  // Initialize custom audio
+  window.hydra.synth.a = new CustomAudio({
+    context: context,
+    source: source
+  });
+  window.a = window.hydra.synth.a; // set global variable for audio
+  window.hydra.detectAudio = true; // now force hydra to tick audio too
+
+  // Run Hydra sketch
+  run();
+}
+
 function init() {
   window.addEventListener("resize", resizeCanvas, false);
 
@@ -52,28 +74,10 @@ function init() {
   resizeCanvas();
 
   // Create a new hydra-synth instance
-  var hydra = new window.Hydra({
+  window.hydra = new window.Hydra({
     canvas: document.getElementById("canvas"),
     detectAudio: false
   });
-
-  // Start playing audio tag, and get context and source for CustomAudio
-  window.context = new AudioContext();
-  var el = document.getElementById("audio");
-  var source = context.createMediaElementSource(el);
-  source.connect(context.destination);
-  //el.play();
-
-  // Initialize custom audio
-  hydra.synth.a = new CustomAudio({
-    context: context,
-    source: source
-  });
-  window.a = hydra.synth.a; // set global variable for audio
-  hydra.detectAudio = true; // now force hydra to tick audio too
-
-  // Run Hydra sketch
-  run();
 }
 
 window.addEventListener("load", init, false);
