@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>xplore</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link 
+      rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" 
+      integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA==" 
+      crossorigin="anonymous" />
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
 
-<head>
-  <title>xplore</title>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- import the latest version of hydra synth-->
+    <script src="https://unpkg.com/hydra-synth"></script>
+    <script src="/script.js" defer></script>
+    <script src="/customAudio.js" defer></script>
+  </head>
 
-  <!-- import the webpage's stylesheet -->
-  <link rel="stylesheet" href="/style.css" />
-
-  <!-- import the latest version of hydra synth-->
-  <script src="https://unpkg.com/hydra-synth"></script>
-  <script src="/script.js" defer></script>
-  <script src="/customAudio.js" defer></script>
-</head>
-
-<body>
-  <p>llalla</p>
-  <button id="play" onclick="play()">play</button>
-  <audio id="audio" crossorigin>
-    <source src="https://cdn.glitch.com/abce0b90-1fde-484f-bece-1fd39082ea19%2Fkyoka.ogg?v=1592955882659"
-      type="audio/ogg" />
-  </audio>
-  <canvas id="canvas"></canvas>
-</body>
-
+  <body>
+    <button id="play" onclick="play()"> <i class="fas fa-play-circle"> </i>
+    </button>
+    <button id="next" onclick="next()"> <i class="fas fa-angle-double-right"></i></i>
+    </button>
+    <audio id="audio" crossorigin>
+      <source
+        src="https://cdn.glitch.com/abce0b90-1fde-484f-bece-1fd39082ea19%2Fkyoka.ogg?v=1592955882659"
+        type="audio/ogg"
+      />
+    </audio>
+    <canvas id="canvas"></canvas>
+  </body>
 </html>

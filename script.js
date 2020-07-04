@@ -6,11 +6,8 @@ function resizeCanvas() {
 
 function run() {
   a.show()
-
   a.setBins(8)
-  
   a.hide()
-  
   osc([60, 30, 15, 7.5].fast(5))
   .color(1,0,0)
   .mult(osc()
@@ -78,6 +75,17 @@ function init() {
     canvas: document.getElementById("canvas"),
     detectAudio: false
   });
+}
+
+function shuffle(array){
+    var i, j, x;
+    for (i = array.length - 1; i > 0; i--){
+      j = Math.floor(Math.random() * (i+1));
+      x = array[i];
+      array[i] = array[j];
+      array[j] = x;
+    }
+    return array;
 }
 
 window.addEventListener("load", init, false);

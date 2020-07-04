@@ -7,3 +7,11 @@ html {
   margin: 0;
   overflow: hidden;
 }
+
+#play {
+  background-color: transparent;
+}
+
+#next {
+  background-color: transparent;
+}

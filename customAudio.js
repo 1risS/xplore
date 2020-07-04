@@ -113,7 +113,6 @@ class CustomAudio {
             (bin - this.settings[index].cutoff) / this.settings[index].scale
           )
         );
-        
         if (this.isDrawing) this.draw();
       }
     }
