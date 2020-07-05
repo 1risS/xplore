@@ -203,6 +203,22 @@ function initializeContext() {
       next();
     });
 
+    audioEl.addEventListener('waiting', () => {
+      const icon = document.getElementById("playIcon");
+      icon.classList.remove("fa-play-circle", "fa-stop-circle");
+      icon.classList.add("fa-spinner", "fa-spin");
+    });
+
+    audioEl.addEventListener('playing', () => {
+      const icon = document.getElementById("playIcon");
+      icon.classList.remove("fa-spinner", "fa-spin");
+      if (playing) {
+        icon.classList.add("fa-stop-circle");
+      } else {
+        icon.classList.add("fa-play-circle");
+      }
+    });
+
     // Initialize custom audio. This CustomAudio is similar to Audio from hydra,
     // but receives an audio context and source, for audio analysis, instead of
     // the microphone.
