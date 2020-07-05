@@ -52,6 +52,19 @@ html {
   width: 25%;
 }
 
+#buttonContainer div {
+  cursor: pointer;
+}
+
+#buttonContainer div:hover {
+  text-shadow: 0px 0px 10px #cd8592;
+}
+
+#buttonContainer div:active {
+  color: #fff;
+  text-shadow: 0px 0px 10px violet;
+}
+
 #play {
   align-self: center;
   color:lightcyan;
