@@ -8,3 +8,8 @@ dependencies.
 ## Development
 
 Run `npm start` to start the server, then go to http://localhost:8080.
+
+## License
+
+Source code released under the AGPL-3.0+ license. See
+[LICENSE.txt](LICENSE.txt) for more information.
