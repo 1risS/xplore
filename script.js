@@ -10,69 +10,64 @@ const playlist = [
     artistName: "Kyoka",
     trackName: "01 HADue",
     profileUrl: "https://example.com/",
+    codeUrl: "https://gist.github.com/discover"
   },
   {
     url: "/audio/02_HADue_AtomTM_remix.mp3",
     artistName: "Kyoka",
     trackName: "02 HADUE (AtomTM Remix)",
     profileUrl: "https://example.com/",
+    codeUrl: "https://gist.github.com/discover"
   },
   {
     url: "/audio/03_YESACLOUDui.mp3",
     artistName: "Kyoka",
     trackName: "03 YESACLOUDui",
     profileUrl: "https://example.com/",
+    codeUrl: "https://gist.github.com/discover"
   },
   {
     url: "/audio/04_23_iSH.mp3",
     artistName: "Kyoka",
     trackName: "04 23 iSH",
     profileUrl: "https://example.com/",
+    codeUrl: "https://gist.github.com/discover"
   },
   {
     url: "/audio/05_ROMOOne.mp3",
     artistName: "Kyoka",
     trackName: "05 ROMOOne",
     profileUrl: "https://example.com/",
+    codeUrl: "https://gist.github.com/discover"
   },
 ];
 
 function playHydra() {
   a.show()
-  a.setBins(8)
-  a.hide()
-  osc([60, 30, 15, 7.5].fast(5))
-    .color(1, 0, 0)
-    .mult(osc()
-      .rotate(Math.PI / 2)
-      .thresh()
-      .mult(noise([40, 20, 10, 5, 2.5]
-        .fast(5)))
-      .shift(0.001, (() => a.fft[0] * 0.04 + 0)
-        , 0, 0.5))
-    .modulate(
-      noise(() => a.fft[2] * 10 + 0.01)
-    )
-    .mask(
-      shape(40)
-        .scale(() => a.fft[3] * 7.5 + 0.1)
-        .modulateScale(shape(3)
-          .scale([1, 2].fast(5)))
-        .modulate(noise(() => (((Math.sin(time / 5) + 1) / 2) * 20 + 5))
-          .mult(src(o0)
-            , () => a.fft[6] * 1 + 0.001))
-    )
-    .add(
-      shape(4)
-        .scale([4, 0])
-        .mult(
-          solid(1, [0, 1].fast(5), 1)
-        )
-      , () => a.fft[1] * 1 + 0.001
-    )
-    .scrollX(0.47)
-    .kaleid(2).rotate(Math.PI / 2)
-    .out()
+a.setBins(8)
+a.hide()
+
+solid(1, 0, 1)
+.mult(shape(2)
+	.scale(0.0125)
+      .modulate(osc(30)
+               )
+)
+.add(
+solid(()=>(((Math.sin(time/5)+1)/2)*0.99+0.01), 0, 1)
+.mult(shape(2)
+	.scale(()=> a.fft[1]*1+0.0125)
+      .modulate(osc(30,0)
+               )
+                  .modulateScale(
+		noise([2,5,10,20,40])
+		)
+      , ()=>(((Math.sin(time/20)+1)/2)*1+0.01)
+)
+  .diff(o0, 0.1)
+)
+.mask(shape(40,0.4,0.125).scale(()=>a.fft[3]*2.5+1.5))
+.out()
 }
 
 function play() {
@@ -80,6 +75,10 @@ function play() {
   // Start playing
   playing = true;
   updateTrack();
+  const button = document.getElementById("playIcon");
+  
+  button.classList.add("fa-stop-circle");
+  button.classList.remove("fa-play-circle");
 
   playHydra();
 }
@@ -91,9 +90,18 @@ function updateTrack() {
   console.log("Current track:", title);
 
   const audioEl = document.getElementById("audio");
+
   audioEl.src = track.url;
+
   if (playing) {
     audioEl.play();
+  }
+}
+function playPause(){
+  if(playing){
+    pause()
+  } else {
+    play()
   }
 }
 
@@ -101,6 +109,13 @@ function pause() {
   const audioEl = document.getElementById("audio");
   audioEl.pause();
   playing = false;
+
+  var button = document.getElementById("playIcon");
+
+  button.classList.add("fa-play-circle");
+  button.classList.remove("fa-stop-circle");
+
+  
 }
 
 function next() {

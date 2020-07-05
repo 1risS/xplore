@@ -1,0 +1,62 @@
+<pre>
+#Tidal - remote Troop session djalgoritmo munshkr irisS
+
+setcps (80/60)
+
+p "i1"
+    $ stack [
+        sometimesBy 0.33 (stut 3 0.4 0.125).(within (0.75,1)(#lpf 100))
+        $ n (run 4) # s "perc"
+        # gain 1                
+        ,
+        sometimesBy 0.33 (stut 3 0.4 0.125) 
+        $ s "~ click(3,8)"
+        # speed (range  1 1.5 $ rand)
+        # gain 1        
+        ,
+        slow 4 $ n (run 4) # s "gretsch"
+        ,
+        s "popkick*<2 2 4>"        
+    ]
+    
+let del v dt dfb = delay v #delaytime dt #delayfeedback dfb    
+    
+p "i1" silence
+-- sorry, my SC was breaking really bad
+-- maybe I again ^^
+
+-- I need to go, thanks iris, thanks mun, was very nice this session! <3
+-- thank you!
+ --  likewise  <3 
+hush
+
+p "m1"
+    $ slow 4 
+    -- $ every 4 (within (0.5, 0.75) (# accelerate "-1"))
+    $ degradeBy "<0 0.25 0 0.75>"
+    $ every 3 (juxBy 0.25 rev . stut 2 0.125 0.125)
+    $ every 2 (ply "1 1 2 2")
+    $ whenmod 64 32 (ply 2)
+    $ whenmod 32 24 (superimpose (rotL 0.25 . (# up 5) . (# gain 0.8)))
+    $ every 6 (juxBy 0.25 $ rotL 0.5 . rev . (# up 12) . (# orbit 1) . (# room 0.5) . (# size 0.97))
+    $ every 8 (within (0.5, 1) $ palindrome)
+    $ rotL 0.75 $ slow 2 $ n "[0 [~ 2], ~ [~ [~ [<3 4 5>]/2]], <0 2 3 4 5>(3,8,<0 2 4>)]" # s "pluck"
+    # speed "[1 3 2 4]*<2 3 1 2>" # pan (fast 2 $ range 0.25 0.75 $ tri) # gain 1
+
+p "m1" silence
+    
+p "m2"
+    $ stut 3 0.125 0.125
+    $ every 2 (jux rev)
+    $ n "[0(3,8,<0 2 3 4>), 1(5,8)?]/2" # s "arpy" # gain 0.85 # pan rand # speed "[2 4 3 5]*2"
+
+p "m2" silence
+
+    
+
+-- dj, question, which Tidal version you have? 1.4.7  ok, thanks... I do now know why your dj4 breaks my SC... 
+-- it works just fine in munshkrs computer Y__Y  1.4.2 sorry guys
+
+-- I also use Tidal 1.4.7 
+-- iris has 1.4.2
+    </pre>

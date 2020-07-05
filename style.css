@@ -44,20 +44,26 @@ html {
 #buttonContainer{
   display: flex;
   justify-content: space-between;
-  width: 15%;
+  width: 25%;
 }
 
 #play {
   align-self: center;
   color:lightcyan;
-  font-size: 3em;
+  font-size: 4em;
 }
 
 #next{
   align-self: center;
   color:lightcyan;
-  font-size: 3em;
+  font-size: 4em;
 
+}
+
+#prev{
+  align-self: center;
+  color:lightcyan;
+  font-size: 4em;
 }
 
 
