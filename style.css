@@ -2,7 +2,8 @@
 
 body,
 html {
-  font-family: helvetica, arial, sans-serif;
+  font-family: "Roboto Mono", monospace;
+  font-size: 18px;
   background-color: pink;
   margin: 0;
   overflow: hidden;
@@ -73,4 +74,18 @@ html {
 
 a {
   color: lightcyan;
+}
+
+#footer {
+  color: lightcyan;
+  position: fixed;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 14px;
+}
+
+#footer p {
+  margin: 0.5em;
 }
