@@ -75,6 +75,7 @@ function playHydra() {
 
 function play() {
   initializeContext();
+
   // Start playing
   playing = true;
   updateTrack();
@@ -153,6 +154,11 @@ function initializeContext() {
     const audioEl = document.getElementById("audio");
     source = context.createMediaElementSource(audioEl);
     source.connect(context.destination);
+
+    // Go to next track when current track finishes
+    audioEl.addEventListener('ended', (event) => {
+      next();
+    });
 
     // Initialize custom audio
     hydra.synth.a = new CustomAudio({
