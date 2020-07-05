@@ -29,7 +29,7 @@ Number.prototype.mod = function (n) {
  */
 const playlist = [
   {
-    url: "/audio/01_HADue.mp3",
+    url: "audio/01_HADue.mp3",
     artistName: "Kyoka",
     trackName: "01 HADue",
     profileUrl: "https://example.com/",
@@ -37,7 +37,7 @@ const playlist = [
     hydraFunction: hydraIrisS,
   },
   {
-    url: "/audio/02_HADue_AtomTM_remix.mp3",
+    url: "audio/02_HADue_AtomTM_remix.mp3",
     artistName: "Kyoka",
     trackName: "02 HADUE (AtomTM Remix)",
     profileUrl: "https://example.com/",
@@ -45,7 +45,7 @@ const playlist = [
     hydraFunction: hydraA,
   },
   {
-    url: "/audio/03_YESACLOUDui.mp3",
+    url: "audio/03_YESACLOUDui.mp3",
     artistName: "Kyoka",
     trackName: "03 YESACLOUDui",
     profileUrl: "https://example.com/",
@@ -53,7 +53,7 @@ const playlist = [
     hydraFunction: hydraB,
   },
   {
-    url: "/audio/04_23_iSH.mp3",
+    url: "audio/04_23_iSH.mp3",
     artistName: "Kyoka",
     trackName: "04 23 iSH",
     profileUrl: "https://example.com/",
@@ -61,7 +61,7 @@ const playlist = [
     hydraFunction: hydraIrisS,
   },
   {
-    url: "/audio/05_ROMOOne.mp3",
+    url: "audio/05_ROMOOne.mp3",
     artistName: "Kyoka",
     trackName: "05 ROMOOne",
     profileUrl: "https://example.com/",
