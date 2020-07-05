@@ -1,50 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>xplore</title>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link 
-      rel="stylesheet" 
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" 
-      integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA==" 
-      crossorigin="anonymous" />
-    <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css" />
 
-    <!-- import the latest version of hydra synth-->
-    <script src="https://unpkg.com/hydra-synth"></script>
-    <script src="/script.js" defer></script>
-    <script src="/customAudio.js" defer></script>
-  </head>
+<head>
+  <title>xplore</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+    integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
+    crossorigin="anonymous" />
+  <!-- import the webpage's stylesheet -->
+  <link rel="stylesheet" href="/style.css" />
 
-  <body>
-    <audio id="audio" crossorigin>
-      <source
-        src="https://cdn.glitch.com/abce0b90-1fde-484f-bece-1fd39082ea19%2Fkyoka.ogg?v=1592955882659"
-        type="audio/ogg"
-      />
-    </audio>
-    <canvas id="canvas"></canvas>
-    <div id="interactionContainer">     
-      <a id="personalWork" href="https://www.youtube.com/channel/UCbRMh2oBfyBybaw2tRwy2-A" target="blank">artista</a>
-      
-      <div id="buttonContainer">
-        <div id="prev" onclick="next()"> 
-          <i class="fas fa-angle-double-left icon-large"></i>
-        </div>
-        <div id="play" onclick="playPause()"> 
-          <i id="playIcon" class="fas fa-play-circle icon-large"></i> 
-        </div>
-        <div id="next" onclick="next()"> 
-          <i class="fas fa-angle-double-right icon-large"></i>
-        </div>
+  <!-- import the latest version of hydra synth-->
+  <script src="https://unpkg.com/hydra-synth"></script>
+  <script src="/hydraScripts.js" defer></script>
+  <script src="/script.js" defer></script>
+  <script src="/customAudio.js" defer></script>
+</head>
+
+<body>
+  <audio id="audio" crossorigin>
+    <source src="https://cdn.glitch.com/abce0b90-1fde-484f-bece-1fd39082ea19%2Fkyoka.ogg?v=1592955882659"
+      type="audio/ogg" />
+  </audio>
+  <canvas id="canvas"></canvas>
+  <div id="interactionContainer">
+    <a id="personalWork" href="https://www.youtube.com/channel/UCbRMh2oBfyBybaw2tRwy2-A" target="blank">artista</a>
+
+    <div id="buttonContainer">
+      <div id="prev" onclick="previous()">
+        <i class="fas fa-angle-double-left icon-large"></i>
       </div>
-      
-      <a id="songCode" href="https://github.com/ritchse" target="blank">título</a>
+      <div id="play" onclick="playPause()">
+        <i id="playIcon" class="fas fa-play-circle icon-large"></i>
+      </div>
+      <div id="next" onclick="next()">
+        <i class="fas fa-angle-double-right icon-large"></i>
+      </div>
+    </div>
+
+    <a id="songCode" href="https://github.com/ritchse" target="blank">título</a>
   </div>
-  </body>
+</body>
+
 </html>
 
 <script>

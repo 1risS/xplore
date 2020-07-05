@@ -4,89 +4,99 @@ let sound;
 let currentTrackIdx = 0;
 let playing = false;
 
+// Función módulo
+Number.prototype.mod = function (n) {
+  return ((this % n) + n) % n;
+};
+
+/*
+ * La variable `playlist` es una lista con objetos que tienen la información de
+ * cada pista:
+ *
+ * - url: la URL del .mp3 que usa el reproductor, debería ser /audio/[archivo].mp3
+ * - artistName: Nombre del artista, como se va a mostrar en el reproductor
+ * - trackName: Nombre de la pista, como se va a mostrar en el reproductor
+ * - profileUrl: URL del artista, opcional
+ * - codeUrl: URL del código de la pista, opcional. Debería ser /codeScripts/[archivo].html
+ * - hydraFunction: debería ser el nombre de la función con el código de hydra para esta pista
+ */
+
 const playlist = [
   {
     url: "/audio/01_HADue.mp3",
     artistName: "Kyoka",
     trackName: "01 HADue",
     profileUrl: "https://example.com/",
-    codeUrl: "https://gist.github.com/discover"
+    codeUrl: "https://gist.github.com/discover",
+    hydraFunction: hydraIrisS,
   },
   {
     url: "/audio/02_HADue_AtomTM_remix.mp3",
     artistName: "Kyoka",
     trackName: "02 HADUE (AtomTM Remix)",
     profileUrl: "https://example.com/",
-    codeUrl: "https://gist.github.com/discover"
+    codeUrl: "https://gist.github.com/discover",
+    hydraFunction: hydraA,
   },
   {
     url: "/audio/03_YESACLOUDui.mp3",
     artistName: "Kyoka",
     trackName: "03 YESACLOUDui",
     profileUrl: "https://example.com/",
-    codeUrl: "https://gist.github.com/discover"
+    codeUrl: "https://gist.github.com/discover",
+    hydraFunction: hydraB,
   },
   {
     url: "/audio/04_23_iSH.mp3",
     artistName: "Kyoka",
     trackName: "04 23 iSH",
     profileUrl: "https://example.com/",
-    codeUrl: "https://gist.github.com/discover"
+    codeUrl: "https://gist.github.com/discover",
+    hydraFunction: hydraIrisS,
   },
   {
     url: "/audio/05_ROMOOne.mp3",
     artistName: "Kyoka",
     trackName: "05 ROMOOne",
     profileUrl: "https://example.com/",
-    codeUrl: "https://gist.github.com/discover"
+    codeUrl: "https://gist.github.com/discover",
+    hydraFunction: hydraIrisS,
   },
 ];
 
-function playHydra() {
-  a.show()
-  a.setBins(8)
-  a.hide()
-
-  solid(1, 0, 1)
-    .mult(shape(2)
-      .scale(0.0125)
-      .modulate(osc(() => a.fft[7] * 20 + 10, 0, 0.03).rotate(Math.PI / 2).modulate(noise(() => (((Math.sin(time / 5) + 1) / 2) * 10 + 0.5), 0.1))
-      )
-      .scrollY(-0.045)
-    )
-    .add(
-      solid(() => (((Math.sin(time / 2) + 1) / 2) * 0.99 + 0.01), 0, 1)
-        .mult(shape(2)
-          .scale(() => a.fft[1] * 1 + 0.0125)
-          .scrollY(-0.045)
-          .modulate(osc(30, 0)
-          )
-          .modulateScale(
-            osc(10, 0.3, 100).modulate(
-              noise(() => a.fft[3] * 0.05 + 280)
-            ))
-          , () => (((Math.sin(time / 20) + 1) / 2) * 1 + 0.01)
-        )
-        .diff(o0, 0.1)
-    )
-    .mask(shape(40, 0.4, 0.125).scale(() => a.fft[3] * 2.5 + 1.5))
-    .out()
-}
-
+/*
+ * Reproduce pista actual, indicada por currentTrackIdx
+ *
+ * También inicializa el contexto de audio por primera vez.
+ */
 function play() {
   initializeContext();
 
   // Start playing
   playing = true;
   updateTrack();
-  const button = document.getElementById("playIcon");
 
+  // Update icons
+  const button = document.getElementById("playIcon");
   button.classList.add("fa-stop-circle");
   button.classList.remove("fa-play-circle");
-
-  playHydra();
 }
 
+/*
+ * Ejecuta la función de Hydra de la pista
+ */
+function runHydra() {
+  // Clear hydra first
+  hush();
+  // Run hydra code from current track
+  const track = playlist[currentTrackIdx];
+  track.hydraFunction();
+}
+
+/*
+ * Actualiza los datos de la pista en el reproductor, y se asegura de ejecutar
+ * el reproductor y actualizar el código de Hydra
+ */
 function updateTrack() {
   const track = playlist[currentTrackIdx];
 
@@ -99,8 +109,13 @@ function updateTrack() {
 
   if (playing) {
     audioEl.play();
+    runHydra();
   }
 }
+
+/*
+ * Reproduce o pausa dependiendo del estado
+ */
 function playPause() {
   if (playing) {
     pause()
@@ -109,30 +124,47 @@ function playPause() {
   }
 }
 
+/*
+ * Pausa la reproducción
+ */
 function pause() {
   const audioEl = document.getElementById("audio");
   audioEl.pause();
   playing = false;
 
+  // Update icons
   var button = document.getElementById("playIcon");
-
   button.classList.add("fa-play-circle");
   button.classList.remove("fa-stop-circle");
-
-
 }
 
+/*
+ * Avanza a la siguiente pista
+ *
+ * Usa la función mod (módulo) para hacer una lista circular. Es decir, si
+ * está en la última pista, vuelve a la primera.
+ */
 function next() {
-  currentTrackIdx = (currentTrackIdx + 1) % playlist.length;
+  currentTrackIdx = (currentTrackIdx + 1).mod(playlist.length);
   updateTrack();
 }
 
-function prev() {
-  console.log("prev");
-  currentTrackIdx = (currentTrackIdx - 1) % playlist.length;
+/*
+ * Vuelve a la anterior pista
+ *
+ * Usa la función mod (módulo) para hacer una lista circular. Es decir, si
+ * está en la primer pista, va a la última.
+ */
+function previous() {
+  currentTrackIdx = (currentTrackIdx - 1).mod(playlist.length);
   updateTrack();
 }
 
+/*
+ * Inicializa Hydra y ajusta el canvas.
+ *
+ * Se ejecuta al cargar la página (evento onload)
+ */
 function init() {
   window.addEventListener("resize", resizeCanvas, false);
 
@@ -146,6 +178,11 @@ function init() {
   });
 }
 
+/*
+ * Inicializa el contexto de audio y fuente para Hydra
+ *
+ * También setea eventos generales del <audio>.
+ */
 function initializeContext() {
   // Initialize audio context and source, if it's the first time
   if (!context || !source) {
@@ -160,7 +197,9 @@ function initializeContext() {
       next();
     });
 
-    // Initialize custom audio
+    // Initialize custom audio. This CustomAudio is similar to Audio from hydra,
+    // but receives an audio context and source, for audio analysis, instead of
+    // the microphone.
     hydra.synth.a = new CustomAudio({
       context: context,
       source: source
@@ -170,6 +209,9 @@ function initializeContext() {
   }
 }
 
+/*
+ * Devuelve una copia de array mezclada.
+ */
 function shuffle(array) {
   var i, j, x;
   for (i = array.length - 1; i > 0; i--) {
@@ -181,10 +223,14 @@ function shuffle(array) {
   return array;
 }
 
+/*
+ * Ajusta el ancho y alto del canvas para que sea full screen
+ */
 function resizeCanvas() {
   var canvas = document.getElementById("canvas");
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 }
 
+// Cuando se cargue la página, ejecuta la función `init`
 window.addEventListener("load", init, false);
