@@ -52,7 +52,7 @@ function hydraA() {
           .scale(0.05)
           .scrollY(0.03)
           .modulate(src(o0)
-            .scale(0.4).scrollY(() => a.ff[2] * 0.04 + 0.015))
+            .scale(0.4).scrollY(() => a.fft[2] * 0.04 + 0.015))
       )
     )
     .blend(shape(4)
