@@ -1,10 +1,17 @@
+// Contexto de audio (context) y nodo fuente (source)
 let context, source;
+
+// Instancia de Hydra
 let hydra;
-let sound;
+
+// Indice de la pista actual
 let currentTrackIdx = 0;
+
+// Estado del reproductor. Tiene que empezar detenido porque Chrome no ermite
+// que una página autoreproduzca audio sin interacción del usuario.
 let playing = false;
 
-// Función módulo
+// Función módulo utilizada para implementar la playlist circular
 Number.prototype.mod = function (n) {
   return ((this % n) + n) % n;
 };
@@ -20,7 +27,6 @@ Number.prototype.mod = function (n) {
  * - codeUrl: URL del código de la pista, opcional. Debería ser /codeScripts/[archivo].html
  * - hydraFunction: debería ser el nombre de la función con el código de hydra para esta pista
  */
-
 const playlist = [
   {
     url: "/audio/01_HADue.mp3",
