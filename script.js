@@ -182,6 +182,10 @@ function init() {
     canvas: document.getElementById("canvas"),
     detectAudio: false
   });
+
+  // Make container visible
+  const container = document.getElementById("interactionContainer");;
+  container.classList.remove("hidden");
 }
 
 /*

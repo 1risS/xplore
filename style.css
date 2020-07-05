@@ -12,6 +12,10 @@ html {
   align-items: center;
 }
 
+.hidden {
+  display: none !important;
+}
+
 #play {
   background-color: transparent;
   /* position: absolute; */
