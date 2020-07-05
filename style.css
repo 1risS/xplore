@@ -6,12 +6,61 @@ html {
   background-color: pink;
   margin: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #play {
   background-color: transparent;
+  /* position: absolute; */
+  border: none;
+  /* display: inline-block; */
 }
 
 #next {
   background-color: transparent;
+  /* position: absolute; */
+  border: none;
+  /* display: inline-block; */
+}
+
+#interactionContainer {
+  display: inherit;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 30%;
+  justify-content: space-evenly;
+  align-items: center;
+  /* background-color: lightskyblue; */
+  /* opacity: 0.25; */
+}
+
+#buttonContainer{
+  display: flex;
+  justify-content: space-between;
+  width: 15%;
+}
+
+#play {
+  align-self: center;
+  color:lightcyan;
+  font-size: 3em;
+}
+
+#next{
+  align-self: center;
+  color:lightcyan;
+  font-size: 3em;
+
+}
+
+
+a {
+  color: lightcyan;
 }
