@@ -66,7 +66,7 @@ const playlist = [
     trackName: "05 ROMOOne",
     profileUrl: "https://example.com/",
     codeUrl: "https://gist.github.com/discover",
-    hydraFunction: hydraIrisS,
+    hydraFunction: hydraA,
   },
 ];
 
