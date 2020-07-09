@@ -27,21 +27,21 @@
   </audio>
   <canvas id="canvas"></canvas>
   <div id="interactionContainer" class="hidden">
-    <a id="personalWork" href="https://www.youtube.com/channel/UCbRMh2oBfyBybaw2tRwy2-A" target="blank">artista</a>
+    <span id="artistName"></span>
 
     <div id="buttonContainer">
-      <div id="prev" onclick="previous()">
+      <div id="prev" onclick="previous()" class="hidden">
         <i class="fas fa-angle-double-left icon-large"></i>
       </div>
       <div id="play" onclick="playPause()">
         <i id="playIcon" class="fas fa-play-circle icon-large"></i>
       </div>
-      <div id="next" onclick="next()">
+      <div id="next" onclick="next()" class="hidden">
         <i class="fas fa-angle-double-right icon-large"></i>
       </div>
     </div>
 
-    <a id="songCode" href="https://github.com/ritchse" target="blank">título</a>
+    <a id="trackName" href="https://github.com/ritchse" target="_blank"></a>
   </div>
 
   <div id="footer">

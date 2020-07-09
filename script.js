@@ -86,14 +86,14 @@ const playlist = [
     url: "audio/Gabriela_Baldoni_-_Kaos.mp3",
     artistName: "Gabriela Baldoni",
     trackName: "Kaos",
-    codeUrl: "codeScripts/Gabriela_Baldoni-_Kaos.html",
+    codeUrl: "codeScripts/Gabriela_Baldoni_-_Kaos.html",
     hydraFunction: hydraA,
   },
   {
     url: "audio/Gabriela_Baldoni_-_Primer_intento.mp3",
     artistName: "Gabriela Baldoni",
     trackName: "Primer Intento",
-    codeUrl: "codeScripts/Gabriela_Baldoni-_Primer_intento.html",
+    codeUrl: "codeScripts/Gabriela_Baldoni_-_Primer_intento.html",
     hydraFunction: hydraA,
   },
   {
@@ -107,7 +107,6 @@ const playlist = [
     url: "audio/Karen_Chalco_-_7il42.mp3",
     artistName: "Karen Chalco",
     trackName: "7il42",
-    codeUrl: "codeScripts/Karen_Chalco_-_7il42.html",
     hydraFunction: hydraA,
   },
   {
@@ -139,9 +138,13 @@ function play() {
   updateTrack();
 
   // Update icons
-  const button = document.getElementById("playIcon");
-  button.classList.add("fa-stop-circle");
-  button.classList.remove("fa-play-circle");
+  const icon = document.getElementById("playIcon");
+  icon.classList.add("fa-stop-circle");
+  icon.classList.remove("fa-play-circle");
+
+  // Show next/prev buttons now
+  document.getElementById("prev").classList.remove("hidden");
+  document.getElementById("next").classList.remove("hidden");
 }
 
 /*
@@ -166,13 +169,21 @@ function updateTrack() {
   console.log("Current track:", title);
 
   const audioEl = document.getElementById("audio");
-
   audioEl.src = track.url;
 
   if (playing) {
     audioEl.play();
     runHydra();
   }
+
+  // Update artist name
+  const artistNameEl = document.getElementById("artistName");
+  artistNameEl.innerText = track.artistName;
+
+  // Update track name and href
+  const trackNameEl = document.getElementById("trackName");
+  trackNameEl.innerText = track.trackName;
+  trackNameEl.setAttribute("href", track.codeUrl || "#");
 }
 
 /*

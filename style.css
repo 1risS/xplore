@@ -14,7 +14,7 @@ html {
 }
 
 .hidden {
-  display: none !important;
+  visibility: hidden !important;
 }
 
 #play {
@@ -45,6 +45,16 @@ html {
   /* background-color: lightskyblue; */
   /* opacity: 0.25; */
  }
+
+#artistName {
+  width: 20%;
+  text-align: center;
+}
+
+#trackName {
+  width: 20%;
+  text-align: center;
+}
 
 #buttonContainer{
   display: flex;
@@ -85,7 +95,7 @@ html {
 }
 
 
-a {
+a, span {
   color: lightcyan;
 }
 
