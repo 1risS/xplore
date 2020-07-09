@@ -27,7 +27,7 @@ Number.prototype.mod = function (n) {
  * - codeUrl: URL del código de la pista, opcional. Debería ser /codeScripts/[archivo].html
  * - hydraFunction: debería ser el nombre de la función con el código de hydra para esta pista
  */
-const playlist = [
+let playlist = [
   {
     url: "audio/Adriano_Duarte_-_Pajaritos.mp3",
     artistName: "Adriano Duarte",
@@ -239,10 +239,10 @@ function previous() {
  * Se ejecuta al cargar la página (evento onload)
  */
 function init() {
-  window.addEventListener("resize", resizeCanvas, false);
-
-  // Draw canvas border for the first time.
-  resizeCanvas();
+  // Set canvas size to full screen
+  var canvas = document.getElementById("canvas");
+  canvas.width = window.innerWidth * window.devicePixelRatio;
+  canvas.height = window.innerHeight * window.devicePixelRatio;
 
   // Create a new hydra-synth instance with audio disabled
   hydra = new window.Hydra({
@@ -250,8 +250,11 @@ function init() {
     detectAudio: false
   });
 
+  // Shuffle playlist!
+  playlist = shuffle(playlist);
+
   // Make container visible
-  const container = document.getElementById("interactionContainer");;
+  const container = document.getElementById("interactionContainer");
   container.classList.remove("hidden");
 }
 
@@ -314,15 +317,6 @@ function shuffle(array) {
     array[j] = x;
   }
   return array;
-}
-
-/*
- * Ajusta el ancho y alto del canvas para que sea full screen
- */
-function resizeCanvas() {
-  var canvas = document.getElementById("canvas");
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
 }
 
 // Cuando se cargue la página, ejecuta la función `init`
