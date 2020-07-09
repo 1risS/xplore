@@ -1,0 +1,45 @@
+<pre>
+--7il42_KC Karen Chalco
+
+*he ido cambiando algunos valores, pero estas son las funciones que he usado
+gracias!
+
+
+d1
+$ s "[less*3] voodoo"
+# speed (slow 4 $ rand)
+# octave 6
+# cps (slow 4 $ range 0.6 2.4 saw)
+# pan (density 3.8 $ square)
+# gain 0.6
+
+d1 silence
+
+d2
+$ s "supercomparator superhex" # n (irand 45)
+# voice "0.2" # decay "[2 4]"
+# accelerate "0.2" # sustain "0.7" # speed "[5 2]/3"
+# gain 0.4
+
+d2 silence
+
+d3
+$ sometimesBy 0.5 (# crush 2)
+$ n "<[c4 e5 gh9] [dh6 b3 gh2]>"
+# s "superchip"
+# sustain 0.4 #pitch1 "[2 4 5]"
+# gain 0.1
+# nudge 2
+
+d3 silence
+
+d4
+$ s "supernoise/4" # midinote (irand 37) # sustain "4"
+# accelerate "0.2" # voice 0.9 # pitch1 "0.5" # slide "-0.5" # resonance "0.7"
+# attack "1.8" # release "2" # room "3.9" # size "1.9" # orbit "2"
+# gain 0.6
+
+d4 silence
+
+hush
+</pre>

@@ -1,0 +1,72 @@
+<pre>
+--algx Malien
+
+      d1
+$ euclid 3 4
+$ s "insect ~ insect:2 insect:1"
+# octave 8
+# gain 0.6
+
+d2
+$ euclid 4 2
+$ s "popkick*2"
+# up (run 10)
+# gain 0.3
+
+hush -- hola kease :)
+
+
+
+d4
+$ euclid 3 8
+$ chop 8
+$ every 3 (ply 4)
+$ sometimesBy 0.25 (# crush 7)
+$ s "bass0:5 bass0:3"
+# gain 0.8
+
+hush
+
+d5
+$ slow 2
+$ n "0 6 0 1 2 2 3 4"
+# s "supersquare"
+# delay 0.5
+# delayt 1
+# delayfeedback 0.5
+# gain 0.6
+
+
+----------------------- aca esta el codigo dentro de un stack, pero para grabarlo ejecute por separado
+
+  d1
+ $ stack [
+     euclid 3 8
+     $ chop 8
+     $ every 3 (ply 4)
+     $ sometimesBy 0.25 (# crush 7)
+     $ s "bass0:5 bass0:3"
+     # gain 0.3
+      ,
+       euclid 4 2
+      $ s "popkick*2"
+      # up (run 10)
+      # gain 0.5
+      ,
+       slow 2
+      $ n "0 6 0 1 2 2 3 4"
+      # s "supersquare"
+      # delay 0.5
+      # delayt 1
+      # delayfeedback 0.5
+      # gain 0.4
+      ,
+       euclid 3 4
+      -- # every 3 speed (slow 8 )
+      $ s "insect ~ insect:2 insect:1"
+      # octave 8
+      # gain 0.4
+   ]
+
+hush
+</pre>

@@ -1,0 +1,90 @@
+<pre>
+  -- Gesto Técnico en lo cotidiano -- Ángel Jara
+
+  setcps (120/60/4)
+
+  hush
+
+  do
+    d1 silence
+    d2 silence
+    d3 silence
+    d4 silence
+    d5 silence
+    d6 silence
+
+  do
+    solo 1
+    -- solo 2
+    -- solo 3
+    -- solo 4
+    -- solo 5
+    -- solo 6
+
+  do
+    unsolo 1
+    -- unsolo 2
+    -- unsolo 3
+    -- unsolo 4
+    -- unsolo 5
+    -- unsolo 6
+
+    let parteA = "[10 7 3 11 ][0 ~ 1 11 ][10 ~ 8 5 ][  12 12 5 5 ]"
+    	parteB = "[5 13 ~ 5 ][ 9 1  5 <4 12 5 >][3  6 ~ <5 11 5>][12 13 3 5 ]"
+    	parteC = "[~ 4 0 12][13 11 <3 8> 12 ][9 7 5 ~ ][2 3 0 3 ]"
+    	elBajo = "[~ 0 0 0][~ 0 0 0][~ 0 -1 0][~ 0 1 0] [~ 3 3 3][~ 3 3 3][~ 1 0 2][~ 3 3 3]"
+    	del v dt dfb = delay v #delaytime dt #delayfeedback dfb
+
+    let parteA = "[0 8 <3 8 13 1 > 13][2 13 6 6][11 7 2 5][7 2 4 7]"
+    	parteB = "[11 11 13 6][12 0 <8 8 3 13 > 6][5 8 12 9][5 4 4 8]"
+    	parteC = "[0 10 7 7][11 11 <13 10 6 10 12 > 6 ][2 8 1 4 11][5 5 2 5]"
+
+
+
+
+  --     	9 10 2 3 1 8 10 11 0 7 8 13 6 5 0 8 7 11 13 6 5 6 10 11 13 9 12 4 6 12 3 9 7 5 7 9 4 13 0 11 0 1 2
+
+  d1
+  $ rarely (# crush 4)
+  $ cat [
+  slow 2 $ n (scale "minor" parteA) # s "supersquare",
+  slow 2 $ n (scale "minor" parteC) # s "supersquare",
+  slow 2 $ n "",
+  slow 2 $ n (scale "minor" parteA) # s "supersquare",
+  slow 2 $ n (scale "minor" parteC) # s "supersquare",
+  slow 2 $ n (scale "minor" parteA)+12 # s "supersquare",
+  slow 2 $ n "",
+  slow 2 $ n (scale "minor" parteB)+12 # s "supersquare",
+  slow 2 $ n (scale "minor" parteA) # s "supersquare",
+  slow 2 $ n "",
+  slow 2 $ n ""
+  ]
+  # gain 0.6
+  # octave 5
+  # sustain 0.25
+  # resonance 0.2
+  # cutoff (slow 8 $ range 100 600 $ sine)
+
+  d2 $ slow 4 $ n (scale "minor" elBajo)  # s "supersaw"
+  # gain 0.7
+  # octave 1
+  # sustain 0.25
+  # lpf (fast 4 $ range 300 900 $ sine)
+  -- cutoff (slow 2 $ range 500 800 $ sine)
+
+  d3 $ s "[bd*4,[~ sn:1]*2, [~ hh]*4]" # gain 0.7
+
+  d4
+  $ rarely (# lpf 400)
+  $ slow 4 $ s "[click(3,8), click:2(<4 3 2 5>,6)]" # gain 0.6
+  	# del "0.5" "<0.2 0.4>"  "0.1 0.3 0.2"
+
+  d5 $ rarely (# lpf 400)
+  $ stutWith 5 (1/7) (|* speed "2") $ sound "glitch glitch:2" # gain 0.6
+
+
+  d6 $ rarely (# lpf 400)
+  $ gap 34 $ sound "breaks165" # gain 0.7  # gain 0.6
+
+  hush
+</pre>

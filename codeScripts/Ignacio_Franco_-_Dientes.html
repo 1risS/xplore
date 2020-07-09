@@ -1,0 +1,115 @@
+<pre>
+--Dientes - Ignacio Franco
+
+  setcps (105/60/4)
+
+  do
+  d1 silence
+  d2 silence
+  d3 silence
+  d4 silence
+  d5 silence
+  d6 silence
+  d7 silence
+
+  do
+  solo 1
+  solo 2
+  solo 3
+  solo 4
+  solo 5
+  solo 6
+
+  do
+  unsolo 1
+  unsolo 2
+  unsolo 3
+  unsolo 4
+  unsolo 5
+  unsolo 6
+
+  hush
+
+  d1 $ n "<c3*2 cs2> <[d3*2 d1 f3]*2 [cs2*8]> " # s "supersaw"
+  # sustain "<0.3 0.26>"
+  # crush 3.6
+  # voice "0.5"
+  # semitone "7"
+  # resonance "0.85"
+  # pitch1 "0.5"
+  # lfo 2
+  # speed "1"
+  # gain "<0.95 1.08>"
+  # lpf 30 # pan "0.8 0.1 0.8 $ square"
+  # room 0.5 # size 0.6
+  -- # gain 0.88
+
+  d1 silence
+
+  d2 $ n "b4(2,4) b4*2" # s "super808"
+  # gain 0.78
+  # crush 3
+  # room 0.5 # size 0.6
+
+  d2 $ n "b4(3,8)" # s "super808"
+  # gain 0.78
+  # crush 3
+  # room 0.5 # size 0.6
+
+  d2 silence
+
+  d3
+  $ s "hh:7(2,6) hh:7(5,8)"
+  -- # speed (-0.2)
+  # sustain 0.35
+  # crush 7
+  # gain 1.15
+  # room 0.5 # size 0.6 # hpf (range 200 400 $ sine)
+
+  d3 silence
+
+  d4 $ s "industrial:8(5,8,2)"
+  # crush 6.5
+  # gain 1
+  # room 0.5 # size 0.6
+
+  d4 silence
+
+  d5 $ off 0.125 (|+| 7)
+  $ off 0.25 (|+| 12)
+  $ n "[c5(5,8) ds5(4,8) f5(5,8,2) cs5(5,8,2)]/2 <[c5(3,4) ds5(2,4) f5(3,4,2) cs5(3,4,2)]/2 [cs5]*4>" # s "supersaw"
+  # att 0.1 # sustain 0.08
+  # resonance (range 0.28 0.8 $ slow 0.5 $ sine)
+  # crush 4
+  -- # pitch1 "2.5"
+  # room 0.5 # size 0.6
+  # lpf (range 800 4000 $ sine)
+  # speed 1
+  # gain (range 0.35 0.70 $ sine)
+  # pan (range 0.2 0.8 $ square)
+
+  d5 silence
+
+  solo 5
+
+  d6 $ s "hh:2(5,8) hh:2*4"
+  # gain 1.25
+  # crush 6
+
+  d6 $ s "hh:2*12"
+  # gain 1.25
+  # crush 8
+
+  d6 silence
+
+  d7
+  -- $ every 4 (echo (negate 3/8))
+  $ n "c5(2,8)" # s "supernoise"
+  # crush 6.5
+  # accelerate "-2"
+  # speed sine
+  # sustain "0.18"
+  # gain 0.9
+
+  hush
+</pre>

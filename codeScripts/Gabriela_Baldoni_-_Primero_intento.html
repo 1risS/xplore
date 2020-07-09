@@ -1,0 +1,51 @@
+<pre>
+--Primer intento de Gabi Baldoni
+
+d1
+$ n "[0, 4, 7, 9, 12]"
+# s "monsterb"
+# gain "0.6"
+# octave 2
+# legato 30
+# attack 1.5
+# sustain 5
+# release 0.5
+# speed "0.5 0.25 0.125"
+
+d2
+$ n (run 4)
+# s "industrial"
+# gain 0.5
+# speed 0.7
+
+d3
+$ n "[0 3 7][0 3 7]"
+# s "gabba"
+# lpf (slow 4 $ range 100 500 $ tri)
+-- # hpf 50
+# gain 0.5
+# octave 5
+
+d4
+$ n (run 8)
+# s "808"
+# gain 0.6
+
+d5
+$ n (scale "minor" "0 2 4")
+# s "sine"
+# gain 0.6
+# octave 5
+
+d1 silence
+
+d2 silence
+
+d3 silence
+
+d4 silence
+
+d5 silence
+
+hush
+</pre>

@@ -1,0 +1,109 @@
+<pre>
+  -- Objeto Tecnico0001  -- Ángel Jara
+
+  setcps (130/60/4)
+
+  let melo01 = "[f4 e4 d4 g5][g5 ~ ~ a5][a5 [g5] f4][e4 [f4] g4] [f4 e4 d4 g5][g5 ~ ~ a5][a5 [g5] f4][e4 [~ g4]]"
+  	bajo   = "[g2 d3 a3 d3][g2 [d3] ~][g2 d3 a3 d3][g2] [g2 d3 a3 d3][g2 [d3] ~][g2 d3 a3 d3][g2]"
+  	del v dt dfb = delay v #delaytime dt #delayfeedback dfb
+
+  	let del v dt dfb = delay v #delaytime dt #delayfeedback dfb
+
+  hush
+
+  do
+    -- d1 silence
+    -- d2 silence
+    -- d3 silence
+    -- d4 silence
+    -- d5 silence
+    -- d6 silence
+
+  do
+    -- solo 1
+    -- solo 2
+    -- solo 3
+    -- solo 4
+    -- solo 5
+    -- solo 6
+
+  do
+    -- unsolo 1
+    -- unsolo 2
+    -- unsolo 3
+    -- unsolo 4
+    -- unsolo 5
+    -- unsolo 6
+
+
+
+
+    	do
+      	let melo01 = "[f4 e4 d4 g5][g5 ~ ~ a5][a5 [g5] f4][e4 [f4] g4] [f4 e4 d4 g5][g5 ~ ~ a5][a5 [g5] f4][e4 [~ g4]]"
+          	bajo   = "[g2 d3 a3 d3][g2 [d3] ~][g2 d3 a3 d3][g2] [g2 d3 a3 d3][g2 [d3] ~][g2 d3 a3 d3][g2]"
+          	del v dt dfb = delay v #delaytime dt #delayfeedback dfb
+      	d1 $ slow 8
+        	-- $ stut 6 0.4 0.6
+        	$ n bajo # s "supersaw" # gain 0.6
+        	# sustain "0.8" # release "1.9"
+      	d2 $ slow 8 $ n melo01 # s "supervibe" # gain 0.6
+        	# sustain "1.8" # release "1.9" # xsdelay "0.21" # tsdelay "0.68"
+      	all $ ((#delay (sine/16)) . (# delaytime (saw/8)) . (# delayfeedback (rand)) . (# room "0.3") . (# size "0.7"))
+      	d3 $ s "[bd*4,[~ sn:1]*2, [~ hh]*4]" # gain 0.6
+      	d4 $ fast 16 $ randslice 16 $ sound "breaks125"
+        	# gain (choose [0,0.4])
+        	-- # gain 0
+        	# speed (rand)
+        	# end 0.4
+        	#del "0.5" "<0.2 0.4>"  "0.1 0.3 0.2"
+
+        	d4 $ fast 16 $ randslice 16 $ sound "breaks125"
+          	# gain (choose [0,0.4])
+          	-- # gain 0
+          	# speed (rand)
+          	# end 0.04
+          	#del "0.5" "<0.2 0.4>"  "0.1 0.3 0.2"
+
+        	d5 $ fast 32 $ randslice 16 $ sound "breaks125"
+          	# gain (choose [0,0.4])
+          	-- # gain 0
+          	# speed (rand)
+          	# end 0.01
+          	#del "0.5" "<0.2 0.4>"  "0.1 0.3 0.2"
+
+        	d6 $ fast 8 $ randslice 16 $ sound "breaks125"
+          	# gain (choose [0,0.4])
+          	-- # gain 0
+          	# speed (rand)
+          	# end 0.01
+          	#del "0.8" "<0.2 0.4>"  "0.5 0.4 0.2"
+
+          	hush
+
+
+        	do
+          	let melo01 = "[f4 e4 d4 g5][g5 ~ ~ a5][a5 [g5] f4][e4 [f4] g4] [f4 e4 d4 g5][g5 ~ ~ a5][a5 [g5] f4][e4 [~ g4]]"
+              	bajo   = "[g2 d3 a3 d3][g2 [d3] ~][g2 d3 a3 d3][g2] [g2 d3 a3 d3][g2 [d3] ~][g2 d3 a3 d3][g2]"
+          	xfadeIn 1 8 $ slow 8 $ n bajo # s "supersaw" # gain 0
+            	# sustain "0.8" # release "1.9"
+          	xfadeIn 2 8 $ slow 8 $ n melo01 # s "supervibe" # gain 0
+            	# sustain "1.8" # release "1.9" # xsdelay "0.21" # tsdelay "0.68"
+          	xfadeIn 3 8 $ s "[bd*4,[~ sn:1]*2, [~ hh]*4]" # gain 0
+          	xfadeIn 4 8 $ fast 16 $ randslice 16 $ sound "breaks125"
+            	# gain 0
+            	# speed (rand)
+            	# end 0.4
+            	#del "0.5" "<0.2 0.4>"  "0.1 0.3 0.2"
+          	xfadeIn 5 8 $ fast 32 $ randslice 16 $ sound "breaks125"
+            	# gain 0
+            	# speed (rand)
+            	# end 0.01
+            	#del "0.5" "<0.2 0.4>"  "0.1 0.3 0.2"
+          	xfadeIn 6 8 $ fast 8 $ randslice 16 $ sound "breaks125"
+            	# gain 0
+            	# speed (rand)
+            	# end 0.01
+            	#del "0.8" "<0.2 0.4>"  "0.5 0.4 0.2"
+
+  hush
+</pre>

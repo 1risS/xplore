@@ -1,0 +1,75 @@
+<pre>
+  -- ruidismo RetroFuturista 02 -- Ángel Jara
+
+  setcps (120/60/4)
+
+  let del v dt dfb = delay v #delaytime dt #delayfeedback dfb
+
+  hush
+
+  do
+    unsolo 1
+    unsolo 2
+    unsolo 3
+    unsolo 4
+    unsolo 5
+    unsolo 6
+
+  do
+    d1 silence
+    d2 silence
+    d3 silence
+    d4 silence
+    d5 silence
+    d6 silence
+
+  	d1 silence
+
+  	solo 2
+
+  	unsolo 2
+
+  d1 $ splice 64 "[ 1 0 ~ 7 ~ < 6 6 12 7> ~ ~ 20  ~ 30 ~ 40 < 6 6 12 7> ~ 63 ~  50]" $ sound "breaks165" #gain 0.7
+
+  d1 $ splice 64 "[ 1 0 ~ 7 ~ ~ ~ 20 1 8 3 13 ~ ~  6 6 12 <7 2 5 7> ~ 30 ~ 40 ~ 63 ~  50]"
+  $ sound "breaks165"
+  #gain 0.7
+  # lpf 2000
+
+
+  d2 $ slice 8 "0 1 8 2  8 7 5  <0 2 4 <5 4 5 3> 2 1>" $ loopAt 8  $ s "breaks165" # gain 0.7 # end 0.5 # lpf 120
+
+  d3 $ slice 24 "[0 0 3 2 5 7, 5 10 15 3 , 3 5 20]"
+  $ s "breaks165" # gain 0.7
+  # lpf (slow 8 $ range 120 500 $ sine)
+
+  d4 $ slice 24 "[10(3,8), 5(5,8), 12(7,9), 17(2,5)]"
+  $ s "breaks165"
+  # gain 0.7
+  # lpf (slow 8 $ range 120 800 $ sine)
+
+
+  d5 $ rarely ("0.25 0.5 0.125" <~)
+  $ every 5 ("0.25 0.125 0.25" <~)
+  $ every 7 (stut 4 0.5 0.1 )
+  $ (# room 0.5)
+  $ (# size 0.5)
+  $ jux (rev.(hurry 2))
+  $ fast 8 $ randslice 32 $ sound "breaks125"
+    # gain (choose [0,0.7,0.3])
+    -- # gain 0
+    # speed (rand)
+    # end 0.1
+    #del "1" "1/6"  "0.5"
+    # lpf 120
+
+
+    d6 $ stack [
+  s "bd*4",
+  s "[~ sn:1]*2",
+  s "[~ hh:0]*4"
+    ]
+    # gain 0.7
+
+  hush
+</pre>

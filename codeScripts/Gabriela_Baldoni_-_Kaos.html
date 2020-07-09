@@ -1,0 +1,89 @@
+<pre>
+-- Kaos de Gabi Baldoni
+
+d1
+$ n "[0, 4, 7, 9, 12]"
+# s "cosmicg"
+# gain "0.6"
+# octave 2
+# legato 30
+# attack 0
+# sustain 10
+# release 0.7
+# speed "0.5 0.25 0.125"
+
+d1 silence
+
+d2
+$ s "cosmicg*4"
+# gain "0.6"
+# octave 2
+# legato 30
+# attack 0
+# sustain 10
+# release 0.9
+# speed "0.5 0.25 0.125"
+
+d2 silence
+
+d3
+$ n (run 4)
+# s "industrial"
+# gain 0.8
+# speed 0.7
+# octave 5
+
+d3 silence
+
+d4
+$ n (run 8)
+# s "808"
+# gain 0.9
+# octave (round <$> (range 2 8 $ perlin))
+
+d4 silence
+
+d5
+$ n (scale "minor" "0 2 4")
+# s "sine"
+# gain 0.9
+# octave 2 --variar octavas de 2 a 6
+
+d5 silence
+
+d6
+$ n "[0 3 7][0 3 7]"
+# s "gabba"
+# lpf (slow 4 $ range 100 500 $ tri)
+# hpf 50
+# gain 0.9
+# octave 2 --variar octavas de 2 a 8
+
+d6 silence
+
+d7
+$ n (scale "minor" "0 2 4")
+# s "sine"
+# gain 0.9
+# octave (round <$> (range 2 8 $ rand))
+
+d7 silence
+
+
+
+d1 silence --cosmicg 1
+
+d2 silence --cosmicg 2
+
+d3 silence --industrial
+
+d4 silence --808 perlin
+
+d5 silence --sine
+
+d6 silence --gaba
+
+d7 silence-- sine random
+
+hush
+</pre>

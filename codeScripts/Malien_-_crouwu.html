@@ -1,0 +1,44 @@
+<pre>
+--crouwu Mailen
+
+d1
+$ stack[
+sound "[hh*4 insect:3(3,8)]"
+# octave 8
+,
+palindrome $ sound "bass0:0 hh:1*2  bass0:2 bass0:3*2"
+-- # speed (perlin + 0.5)
+# cutoff (perlinWith (saw * 4) * 2000)
+,
+every 3 rev
+$ sound "crow:3*3(4,4)" # speed (perlin + 0.5)
+# gain 0.6
+]
+# n (irand 8)
+
+
+
+-------------- para ejecutar por separado ----------------
+
+
+hush
+
+d1
+$ sound "[hh*4 insect:3(3,8)]"
+# octave 8
+# speed (perlin + 0.5)
+
+
+d2 $ palindrome $ sound "bass0:0 hh:1*2  bass0:2 bass0:3*2"
+-- # speed (perlin + 0.5)
+# cutoff (perlinWith (saw * 4) * 2000)
+# gain 0.5
+
+
+d4
+$ every 3 rev
+$ sound "crow:3*3(4,4)" # speed (perlin + 0.5)
+# delay 0.5
+# delayt 1
+# delayfeedback 0.5
+</pre>
