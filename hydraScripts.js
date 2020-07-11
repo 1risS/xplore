@@ -71,3 +71,229 @@ function hydraA() {
 function hydraB() {
   noise().out();
 }
+
+function hydraAngelJara01() {
+// Ángel Jara
+osc(10)
+.modulate(osc(10).rotate(),4)
+.scale(()=> a.fft[0]*100)
+.repeatX(()=> a.fft[0]*40)
+.out()
+}
+
+function hydraAngelJara02() {
+// Ángel Jara
+osc(10,0.5,4)
+.modulate(osc(10).rotate(),4)
+.scale(()=> a.fft[0]*100)
+.repeatX(()=> a.fft[0]*40)
+.out()
+
+}
+
+function hydraAngelJara03() {
+// Ángel Jara
+osc(10,0.5,4)
+.modulate(osc(10).rotate(),4)
+.scale(()=> a.fft[0]*100)
+.repeatX(()=> a.fft[0]*40)
+.modulate(shape(4).scale(1.7))
+.out()
+
+}
+
+function hydraAngelJara04() {
+// Ángel Jara
+osc(10,0.5,4)
+.modulate(osc(10).rotate(),4)
+.scale(()=> a.fft[0]*100)
+.repeatX(()=> a.fft[0]*40)
+.modulate(shape(4).scale(1.7))
+.diff(shape(4).scale(3))
+.out()
+
+}
+
+function hydraAngelJara05() {
+// Ángel Jara
+osc(10,0.5,4)
+.modulate(osc(10).rotate(),4)
+.scale(()=> a.fft[0]*100)
+.repeatX(()=> a.fft[0]*40)
+.modulate(shape(4).scale(1.7))
+.diff(shape(4).scale(3))
+.diff(osc().rotate(Math.PI/2,0))
+.out()
+
+}
+
+function hydraAngelJara06() {
+// Ángel Jara
+osc(10,0.5,4)
+.modulate(osc(10).rotate(),4)
+.scale(()=> a.fft[0]*100)
+.repeatX(()=> a.fft[0]*40)
+.modulate(shape(4).scale(1.7))
+.diff(shape(4).scale(3))
+.modulate(voronoi().modulate(shape(4)))
+.out()
+
+}
+
+function hydraAngelJara07() {
+// Ángel Jara
+osc(10,0.5,4)
+.modulate(osc(10).rotate(),4)
+.scale(()=> a.fft[0]*100)
+.repeatX(()=> a.fft[0]*40)
+.modulate(noise(4).scale(1.7))
+.diff(noise(4).scale(3))
+.modulate(noise().modulate(noise(4)))
+.mask(shape(4).scale(2))
+.kaleid(5)
+.scale(0.5)
+.out()
+
+}
+
+function hydraAngelJara08() {
+// Ángel Jara
+osc(10)
+.modulate(osc(10).rotate(),4)
+.scale(()=> a.fft[0]*100)
+.repeatX(()=> a.fft[0]*40)
+.mask(shape(4).scale(2))
+.kaleid(5)
+.scale(0.5)
+.out()
+
+}
+
+function hydraAngelJara09() {
+// Ángel Jara
+osc(10,0.5,4)
+.modulate(osc(10).rotate(),4)
+.scale(()=> a.fft[0]*100)
+.repeatX(()=> a.fft[0]*40)
+.mask(shape(4).scale(2))
+.modulate(noise(2),0.2)
+.kaleid(5)
+.scale(0.5)
+.out()
+
+}
+
+function hydraAngelJara10() {
+// Ángel Jara
+osc(10,0.5,4)
+.modulate(osc(10).rotate(),4)
+.scale(()=> a.fft[0]*100)
+.repeatX(()=> a.fft[0]*40)
+.modulate(shape(4).scale(1.7))
+.mask(shape(4).scale(2))
+.modulate(noise(2),0.12)
+.kaleid(5)
+.scale(0.5)
+.out()
+
+}
+
+function hydraAngelJara11() {
+// Ángel Jara
+osc(10,0.5,12)
+.modulate(osc(10).rotate(),4)
+.scale(()=> a.fft[0]*100)
+.repeatX(()=> a.fft[0]*40)
+.modulate(shape(4).scale(1.7))
+.diff(shape(4).scale(3))
+.mask(shape(4).scale(2))
+.modulate(noise(2),()=> a.fft[0]*0.8)
+.kaleid(5)
+.scale(0.5)
+.out()
+
+}
+
+function hydraAngelJara12() {
+// Ángel Jara
+osc(10,0.5,4)
+.modulate(osc(10).rotate(),4)
+.scale(()=> a.fft[0]*100)
+.repeatX(()=> a.fft[0]*40)
+.modulate(shape(4).scale(1.7))
+.diff(shape(4).scale(3))
+.diff(osc().rotate(Math.PI/2,0))
+.mask(shape(4).scale(2))
+.modulate(noise(2),()=> a.fft[0]*0.4)
+.kaleid(5)
+.scale(0.5)
+.out()
+
+}
+
+function hydraAngelJara13() {
+// Ángel Jara
+osc(10,0.5,4)
+.pixelate()
+.modulate(osc(10,0.5,4).rotate(Math.PI/2))
+.mask(shape(4).scale(2))
+//.scrollX(-0.5)
+//.scale(1,0.5)
+.modulate(noise(2),()=> a.fft[0]*0.4)
+.repeat(2,2)
+.out()
+
+}
+
+function hydraAngelJara14() {
+// Ángel Jara
+osc(10,0.5,4)
+.pixelate()
+.thresh(0.3,0.2)
+.diff(osc(10,0.5,4).pixelate().thresh(0.3,0.3).rotate(Math.PI/2))
+.mask(shape(4).scale(2))
+//.scrollX(-0.5)
+//.scale(1,0.5)
+.modulate(noise(2),()=> a.fft[0]*0.45)
+.repeat(2,2)
+.out()
+
+}
+
+function hydraAngelJara15() {
+// Ángel Jara
+osc(10,0.5,4)
+.pixelate()
+.thresh(0.3,0.2)
+.diff(osc(10,0.5,4).pixelate().thresh(0.3,0.3).rotate(Math.PI/2))
+.diff(noise()).diff(o0).color(1.1,0.5,0.1)
+.mask(shape(4).scale(2))
+//.scrollX(-0.5)
+//.scale(1,0.5)
+.modulate(noise(2),()=> a.fft[0]*0.45)
+.repeat(2,2)
+.out()
+
+}
+
+function hydraAngelJara16() {
+// Ángel Jara
+osc(10,0.5,4)
+.pixelate()
+.thresh(0.3,0.2)
+.diff(osc(10,0.5,4).pixelate().thresh(0.3,0.3).rotate(Math.PI/2))
+.diff(noise()).diff(o0).color(1.1,0.5,0.1)
+.mask(shape(4).scale(2))
+//.scrollX(-0.5)
+//.scale(1,0.5)
+.modulate(noise(2),()=> a.fft[0]*3)
+.rotate(1,0.2)
+.mask(shape(6).scale(2))
+.repeat(2,2)
+.blend(o0)
+.blend(o0)
+.blend(o0)
+.out()
+
+}
+
