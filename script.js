@@ -122,6 +122,7 @@ let playlist = [
     artistName: "Malien",
     trackName: "algx",
     codeUrl: "codeScripts/Malien_-_algx.html",
+    profileUrl: "https://www.instagram.com/malien___/",
     hydraFunction: hydraAngelJara10,
   },
   {
@@ -129,6 +130,7 @@ let playlist = [
     artistName: "Malien",
     trackName: "crouwu",
     codeUrl: "codeScripts/Malien_-_crouwu.html",
+    profileUrl: "https://www.instagram.com/malien___/",
     hydraFunction: hydraAngelJara11,
   },
 ];
