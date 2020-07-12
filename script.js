@@ -33,12 +33,14 @@ let playlist = [
     artistName: "Adriano Duarte",
     trackName: "Pajaritos",
     codeUrl: "codeScripts/Adriano_Duarte_-_Pajaritos.html",
+    profileUrl: "https://adrianoduarte.com/",
     hydraFunction: hydraIrisS,
   },
   {
     url: "audio/Ale_Zacha_-_Atras_del_tunel_la_luz.mp3",
     artistName: "Ale Zacha",
     trackName: "Atrás del tunel la luz",
+    profileUrl: "https://alezacha.bandcamp.com/releases",
     hydraFunction: hydraA,
   },
   {
@@ -46,12 +48,14 @@ let playlist = [
     artistName: "Ale Zacha",
     trackName: "olfato tacto y todo lo que no se puede",
     codeUrl: "codeScripts/Ale_Zacha_-_Olfato_Tacto.html",
-    hydraFunction: hydraB,
+    profileUrl: "https://alezacha.bandcamp.com/releases",
+    hydraFunction: hydraAngelJara03,
   },
   {
     url: "audio/Ale_Zacha_-_todo_lo_que_si_se_puede.mp3",
     artistName: "Ale Zacha",
     trackName: "todo lo que si se puede",
+    profileUrl: "https://alezacha.bandcamp.com/releases",
     hydraFunction: hydraAngelJara12,
   },
   {
@@ -59,6 +63,7 @@ let playlist = [
     artistName: "Ángel Jara",
     trackName: "Gesto Técnico en lo Cotidiano",
     codeUrl: "codeScripts/Angel_Jara_-_Gesto_Tecnico.html",
+    profileUrl: "https://github.com/bruveping",
     hydraFunction: hydraAngelJara13,
   },
   {
@@ -66,6 +71,7 @@ let playlist = [
     artistName: "Ángel Jara",
     trackName: "Objecto Técnico 0001",
     codeUrl: "codeScripts/Angel_Jara_-_Objeto_Tecnico.html",
+    profileUrl: "https://github.com/bruveping",
     hydraFunction: hydraAngelJara04,
   },
   {
@@ -73,6 +79,7 @@ let playlist = [
     artistName: "Ángel Jara",
     trackName: "ruidismoRetroFuturista02",
     codeUrl: "codeScripts/Angel_Jara_-_Ruidismo_RetroFuturista_02.html",
+    profileUrl: "https://github.com/bruveping",
     hydraFunction: hydraAngelJara16,
   },
   {
@@ -80,6 +87,7 @@ let playlist = [
     artistName: "cataHache",
     trackName: "tink",
     codeUrl: "codeScripts/cataHache_-_tink.html",
+    profileUrl: "https://www.instagram.com/sensibilidadvirtual",
     hydraFunction: hydraAngelJara15,
   },
   {
@@ -179,11 +187,13 @@ function updateTrack() {
   // Update artist name
   const artistNameEl = document.getElementById("artistName");
   artistNameEl.innerText = track.artistName;
+  artistNameEl.setAttribute("href", track.profileUrl || "#")
 
   // Update track name and href
   const trackNameEl = document.getElementById("trackName");
   trackNameEl.innerText = track.trackName;
   trackNameEl.setAttribute("href", track.codeUrl || "#");
+  
 }
 
 /*
