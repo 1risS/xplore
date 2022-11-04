@@ -1,5 +1,7 @@
 # xplore
 
+Audiovisual player for TidalCycles and Hydra songs by workshop attendees
+
 ## Install
 
 Clone this repository or download the zip file.  Run `npm install` to install
